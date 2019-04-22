@@ -32,12 +32,8 @@
         <br>
         <div>
           <div>
-            run it: <button onclick="open_in_pytut();">in python tutor</button> <button onclick="copy_it();">in console</button> <br>
-            edit in: <button onclick="open_in('blockit');">block it</button> <Br>
-            study it with: <button onclick="open_in('spot');">spot</button> 
-            <button onclick="open_in('shuffle');">shuffle</button> 
-            <button onclick="open_in('linter');">linter</button> 
-            <button onclick="open_in('flowviz');">flow viz</button> 
+            run it: <button onclick="open_in_pytut();">in python tutor</button> <button onclick="copy_it();">copy snippet</button> <br>
+            study it with: <button onclick="open_in('spot');">spot</button> <button onclick="open_in('shuffle');">shuffle</button> 
             <br>           
             <button id="gen-perma" onclick="gen_permalink();">generate permalink:</button>
             <input id="display-perma"></input><br>
@@ -55,66 +51,66 @@
         <div>
           <p><b>simple script -></b> drag them into the correct order</p>
           <pre class="prettyprint">
-const a = "1";
-const b = "2";
-const c = a + b;
+a = 1
+b = 2
+c = a + b
           </pre>
         </div>
         <div>
           <p><b>careful! -></b> the parsonizer won't work if your first line is indented</p>
           <pre class="prettyprint">
-  const a = "1";
-const b = "2";
-const c = a + b;
+ a = 1
+b = 2
+c = a + b
           </pre>
         </div>
         <div>
           <p><b>a basic if/else  -></b> drop the indented lines at the correct depth</p>
           <pre class="prettyprint">
-if (null) {
-  console.log('never');
-} else {
-  console.log('always');
-};
+if False:
+  print('never')
+else:
+  print('always')
           </pre>
         </div>
         <div>
           <p><b>nested if's -></b> drop the doubly indented line twice as far in</p>
           <pre class="prettyprint">
-if (true) {
-  if (false) {
-    console.log('never');
-  }; // inner
-}; // outer
+if False:
+  print('never')
+else:
+  if True:
+    print('always')
           </pre>
         </div>
         <div>
           <p><b>for loop with return -></b> up the challenge by adding extra lines </p>
           <pre class="prettyprint">
-for (let i = 0; i < 4; i++) {
-  i++;
-  return i; #distractor
-};
+for i range(10):
+  i++
+  return i #distractor
           </pre>
         </div>
         <div>
           <p><b>programming challenges -></b> practice the logic without the errors</p>
           <pre class="prettyprint">
-function reverstring(str) {
-  const arrayed = str.split("");
-  const reversed = arrayed.reverse();
-  const re_stringed = reversed.join("");
-  return re_stringed;
-};
+# https://dbader.org/blog/python-reverse-string #distractor
+def reverse_string(s):
+  chars = list(s)
+  for i in range(len(s) // 2):
+    tmp = chars[i]
+    chars[i] = chars[len(s) - i - 1]
+    chars[len(s) - i - 1] = tmp
+  return ''.join(chars)
           </pre>
         </div>
         <br/>
         <hr>
-        <p> <a href="https://github.com/janke-learning/parsonizer" target="_blank">parsonizer source code</a>, powered by <a href="https://github.com/js-parsons/js-parsons" target="_blank">  js-parsons </a>
+        <p> <a href="https://github.com/blocks-to-text/parsonizer" target="_blank">parsonizer source code</a>, powered by <a href="https://github.com/js-parsons/js-parsons" target="_blank">  js-parsons </a>
         <br>
         <hr>  
         <hr>  
-        <a href="http://janke-learning.org" target="_blank"><img src="https://user-images.githubusercontent.com/18554853/50098409-22575780-021c-11e9-99e1-962787adaded.png" width="40" height="40"></img> Janke Learning</a>  
+        <a href="http://blocks-to-text.github.io" target="_blank"><img src="https://user-images.githubusercontent.com/18554853/56295649-68bab580-612d-11e9-8074-66f094132eed.jpg" width="40" height="40"></img> Blocks to Text</a>  
 
         <!-- begin guess history modal -->
 
@@ -170,7 +166,7 @@ function reverstring(str) {
 
           editor.setTheme('ace/theme/chrome');
           editor.setFontSize(15);
-          editor.getSession().setMode('ace/mode/javascript');
+          editor.getSession().setMode('ace/mode/python');
           editor.getSession().setTabSize(2);
          
           var query = read_snippet_query();
@@ -178,7 +174,7 @@ function reverstring(str) {
             editor.setValue(query);
             parsons_mode();
           } else {
-            snippet = 'if (false) {\n  console.log("never");\n}';
+            snippet = 'def table():\n  return "table"\n\nprint ( table() )';
             editor.setValue(snippet);
             change_mode();
           };
